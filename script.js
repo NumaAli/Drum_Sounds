@@ -4,7 +4,8 @@ const drumButtons = document.querySelectorAll(".drum")
 // Add click event listeners to all drum buttons
 drumButtons.forEach((button) => {
   button.addEventListener("click", function () {
-    const buttonKey = this.classList[0] 
+    const buttonKey = this.classList[0]
+    playSound(buttonKey)
     buttonAnimation(buttonKey)
   })
 })
@@ -12,14 +13,13 @@ drumButtons.forEach((button) => {
 // Add keypress event listener to the document
 document.addEventListener("keydown", (event) => {
   const key = event.key.toLowerCase()
-  // Check if the pressed key matches our drum keys
   if (["w", "a", "s", "d", "j", "k", "l"].includes(key)) {
     playSound(key)
     buttonAnimation(key)
   }
 })
 
-// play sound 
+// play sound
 function playSound(key) {
   let audio
 
@@ -57,7 +57,6 @@ function buttonAnimation(currentKey) {
   const activeButton = document.querySelector("." + currentKey)
 
   if (activeButton) {
-    // Add the pressed class
     activeButton.classList.add("pressed")
 
     setTimeout(() => {
@@ -70,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   addDrumImages()
 })
 
-// add drum images 
+// add drum images
 function addDrumImages() {
   const drumMapping = {
     w: "images/crash.png",
